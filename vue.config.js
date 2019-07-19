@@ -31,7 +31,8 @@ module.exports = {
                     '@': path.resolve(__dirname, './src'),
                     '@components': path.resolve(__dirname, './src/components'),
                     '@view': path.resolve(__dirname, './src/view'),
-                    '@assets': path.resolve(__dirname, './src/assets')
+                    '@assets': path.resolve(__dirname, './src/assets'),
+                    '@api': path.resolve(__dirname, './src/api')
                 }, // 别名配置
                 extensions: ['.js','.vue','.json'],
             }
@@ -59,17 +60,7 @@ module.exports = {
         overlay: {
             warnings: true,
             errors: true
-        }, // 错误、警告在页面弹出
-        proxy: {
-            '/api': {
-                target: 'http://www.baidu.com/api',
-                changeOrigin: true, // 允许websockets跨域
-                // ws: true,
-                pathRewrite: {
-                    '^/api': ''
-                }
-            }
-        } // 代理转发配置，用于调试环境
+        },
     },
     // 第三方插件配置
     pluginOptions: {}
