@@ -2,10 +2,10 @@
     <div class="hello">
         <!--<img alt="Vue logo" src="../assets/img/logo.png">-->
         <!--<h1>{{ msg }}</h1>-->
-        <video :src=video muted="muted" preload="auto" loop="loop" height="100%" width="100%"
-               autoplay="autoplay"  oncontextmenu="return false"></video>
-        <!--<video src="@assets/video/wow1.mp4" muted="muted" preload="auto" loop="loop" height="100%" width="100%"-->
-               <!--autoplay="autoplay"></video>-->
+        <!--<video :src=video muted="muted" preload="auto" loop="loop" height="100%" width="100%"-->
+               <!--autoplay="autoplay"  oncontextmenu="return false"></video>-->
+        <video src="@assets/video/wow1.mp4" muted="muted" preload="auto" loop="loop" height="100%" width="100%"
+               autoplay="autoplay"></video>
     </div>
 </template>
 

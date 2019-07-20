@@ -13,7 +13,8 @@ axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded
 // 管理后台
 //登陆
 export const back_login = '/backLogin/login';
+export const back_register = '/backLogin/register';
 
-Vue.use(VueAxios, axios)
+Vue.use(VueAxios, axios);
 
 

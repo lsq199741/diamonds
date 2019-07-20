@@ -1,7 +1,7 @@
 <template>
     <div class="content-box">
 
-        <el-form id="pwdLoginForm" ref="form" :model="form">
+        <el-form id="pwdRegisterForm" ref="form" :model="form">
             <el-form-item>
                 <el-input class="pwdInput" placeholder="账号" v-model="form.account" clearable></el-input>
             </el-form-item>
@@ -9,17 +9,17 @@
                 <el-input class="pwdInput" placeholder="密码" v-model="form.password" show-password clearable></el-input>
             </el-form-item>
             <el-form-item style="text-align: center">
-                <el-button type="primary" @click="onSubmit" style="width: 100%">登陆</el-button>
+                <el-button type="primary" @click="onSubmit" style="width: 100%">注册</el-button>
             </el-form-item>
         </el-form>
     </div>
 </template>
 
 <script>
-    import {back_login} from '@api/index'
+    import {back_register} from '@api/index'
 
     export default {
-        name: "LoginForm",
+        name: "RegisterForm",
         data() {
             return {
                 form: {
@@ -30,26 +30,28 @@
         },
         methods: {
             onSubmit() {
-                this.$http.post(back_login, this.form).then((res) => {
+                this.$http.post(back_register, this.form).then((res) => {
                     const data = res.data;
                     if (data.r == 1) {
-                        this.login_success()
-                        this.$router.push('/back/home')
+                        let backlogin = data.data;
+                        backlogin.logined = 1;
+                        this.$store.commit('backlogin', backlogin);
+                        this.success();
+                        // this.$router.push('/back/home')
                     } else {
-                        this.login_error(data.msg)
+                        this.error(data.msg)
                     }
                 })
             },
-            login_success(){
+            success() {
                 this.$message({
-                    message: '恭喜你，这是一条成功消息',
+                    message: '注册成功',
                     type: 'success'
                 });
             },
-            login_error(msg){
+            error(msg) {
                 this.$message.error(msg);
             }
-
         }
     }
 </script>
@@ -57,7 +59,7 @@
 <style>
     /*//修改input的样式，为了不覆盖本组件其他处的样式，需要自定义一个类名*/
     .pwdInput input.el-input__inner {
-        border-radius:15px;
+        border-radius: 15px;
         background-color: transparent;
         color: white;
     }
@@ -75,7 +77,8 @@
     #pwdLoginForm {
         padding: 0px 80px;
     }
-    .pwdInput{
+
+    .pwdInput {
         background-color: transparent;
     }
 

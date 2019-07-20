@@ -7,7 +7,7 @@
 </template>
 
 <script>
-    import LoginForm from "@/components/admin/login/index";
+    import LoginForm from "@/components/back/login/loginForm";
 
     export default {
         name: "backIndex",
